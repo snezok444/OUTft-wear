@@ -1,185 +1,186 @@
-/* ====== БАЗА ====== */
-:root{
+/* ===========================
+   1. БАЗОВЫЕ НАСТРОЙКИ
+=========================== */
+:root {
   --bg: #ffffff;
   --surface: #f9fafb;
-  --text: #0f172a;
+  --text: #111827;
   --muted: #6b7280;
   --accent: #111827;
   --radius: 12px;
-  --gap: 20px;
+  --gap: 24px;
   --container: 1100px;
-  --font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  --font-head: "Poppins", Inter, system-ui, Arial;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-head: 'Motter Tektura', sans-serif;
 }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:var(--font);
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  line-height:1.5;
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ====== КОНТЕЙНЕР ====== */
-.container{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:24px;
+/* ===========================
+   2. КОНТЕЙНЕР И СЕТКА
+=========================== */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 24px;
 }
+.grid {
+  display: grid;
+  gap: var(--gap);
+}
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
 
-/* ====== ТИПОГРАФИКА ====== */
-/* Заголовки — Motter Tektura */
+/* ===========================
+   3. ТИПОГРАФИКА
+=========================== */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Motter Tektura', sans-serif;
+  font-family: var(--font-head);
   font-weight: 400;
   letter-spacing: -0.01em;
+  margin: 0 0 12px 0;
 }
-.muted{color:var(--muted)}
+p { margin: 0 0 12px 0; color: var(--muted); }
+.muted { color: var(--muted); }
 
-/* ====== HEADER ====== */
-.header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:20px 0;
-  border-bottom:1px solid #e5e7eb;
+/* ===========================
+   4. HEADER
+=========================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid #e5e7eb;
 }
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  color:inherit;
+.logo {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--accent);
 }
-.logo{
-  width:42px;
-  height:42px;
-  border-radius:10px;
-  background:#111827;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
+nav {
+  display: flex;
+  gap: 18px;
 }
-.nav{
-  display:flex;
-  gap:18px;
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
-.nav a{
-  color:var(--muted);
-  text-decoration:none;
-  font-weight:500;
-}
+nav a:hover { color: var(--accent); }
 
-/* ====== КНОПКИ ====== */
-.btn{
-  display:inline-block;
-  padding:10px 16px;
-  border-radius:10px;
-  font-weight:600;
-  text-decoration:none;
+/* ===========================
+   5. HERO-БЛОК
+=========================== */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 0;
 }
-.btn-primary{
-  background:var(--accent);
-  color:#fff;
+.hero img {
+  width: 400px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius);
 }
-.btn-outline{
-  border:1px solid #e5e7eb;
-  color:var(--accent);
+.hero h1 {
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 8px;
 }
-
-/* ====== HERO ====== */
-.hero{
-  display:flex;
-  align-items:center;
-  gap:40px;
-  padding:40px 0;
-}
-.hero img{
-  width:360px;
-  height:240px;
-  object-fit:cover;
-  border-radius:14px;
+.hero p {
+  color: var(--muted);
+  max-width: 480px;
 }
 
-/* ====== КАТАЛОГ ====== */
-.grid{
-  display:grid;
-  gap:var(--gap);
+/* ===========================
+   6. КАРТОЧКИ ТОВАРОВ
+=========================== */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
-.grid-3{
-  grid-template-columns:repeat(3,1fr);
+.card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: var(--radius);
 }
-@media(max-width:900px){
-  .grid-3{grid-template-columns:repeat(2,1fr)}
+.card-title {
+  font-family: var(--font-head);
+  font-size: 18px;
 }
-@media(max-width:600px){
-  .grid-3{grid-template-columns:1fr}
+.card-price {
+  color: var(--muted);
+  font-weight: 600;
 }
-
-/* ====== КАРТОЧКА ТОВАРА ====== */
-.card{
-  background:var(--surface);
-  border-radius:var(--radius);
-  padding:16px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  border:1px solid #e5e7eb;
-}
-.card img{
-  width:100%;
-  height:240px;
-  object-fit:cover;
-  border-radius:10px;
-}
-.card-title{
-  font-weight:600;
-  font-size:16px;
-}
-.card-price{
-  color:var(--muted);
-  font-weight:600;
-}
-.card-actions{
-  display:flex;
-  gap:10px;
+.card-actions {
+  display: flex;
+  gap: 10px;
 }
 
-/* ====== СТРАНИЦА ТОВАРА ====== */
-.product{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  padding:40px 0;
+/* ===========================
+   7. КНОПКИ
+=========================== */
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
-@media(max-width:900px){
-  .product{grid-template-columns:1fr}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
 }
-.product img{
-  width:100%;
-  border-radius:14px;
+.btn-outline {
+  border: 1px solid #e5e7eb;
+  color: var(--accent);
 }
-.sizes{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-.size{
-  padding:8px 14px;
-  border-radius:8px;
-  border:1px solid #e5e7eb;
-  font-weight:600;
-}
+.btn:hover { opacity: 0.85; }
 
-/* ====== FOOTER ====== */
-.footer{
-  border-top:1px solid #e5e7eb;
-  padding:24px 0;
-  text-align:center;
-  color:var(--muted);
-  font-size:14px;
+/* ===========================
+   8. СТРАНИЦА ТОВАРА
+=========================== */
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 40px 0;
+}
+.product img {
+  width: 100%;
+  border-radius: var(--radius);
+}
+@media (max-width: 900px) { .product { grid-template-columns: 1fr; } }
+
+/* ===========================
+   9. FOOTER
+=========================== */
+footer {
+  border-top: 1px solid #e5e7eb;
+  padding: 24px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
 }
