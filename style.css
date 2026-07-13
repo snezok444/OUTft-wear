@@ -1,186 +1,200 @@
-/* ===========================
-   1. БАЗОВЫЕ НАСТРОЙКИ
-=========================== */
+/* ====== БАЗА ====== */
+
 :root {
-  --bg: #ffffff;
-  --surface: #f9fafb;
-  --text: #111827;
-  --muted: #6b7280;
-  --accent: #111827;
-  --radius: 12px;
-  --gap: 24px;
-  --container: 1100px;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-head: 'Motter Tektura', sans-serif;
+  --bg-main: #f2f2f2;
+  --bg-dark: #0f0f0f;
+  --text-main: #0f0f0f;
+  --text-muted: #4a4a4a;
+  --border: #0f0f0f;
+  --font-main: "Montserrat", "Eurostile", "Söhne Breit", sans-serif;
+
+  --transition: 0.25s ease;
 }
 
-* { box-sizing: border-box; }
-body {
+* {
   margin: 0;
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ===========================
-   2. КОНТЕЙНЕР И СЕТКА
-=========================== */
-.container {
-  max-width: var(--container);
+body {
+  background: var(--bg-main);
+  font-family: var(--font-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  letter-spacing: 0.01em;
+}
+
+.page {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 40px 20px;
 }
-.grid {
-  display: grid;
-  gap: var(--gap);
-}
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-@media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
 
-/* ===========================
-   3. ТИПОГРАФИКА
-=========================== */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-head);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  margin: 0 0 12px 0;
-}
-p { margin: 0 0 12px 0; color: var(--muted); }
-.muted { color: var(--muted); }
+/* ====== НАВИГАЦИЯ ====== */
 
-/* ===========================
-   4. HEADER
-=========================== */
-header {
+.nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 0;
-  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
 }
-.logo {
-  font-family: var(--font-head);
+
+.nav-logo {
   font-size: 20px;
   font-weight: 700;
-  text-decoration: none;
-  color: var(--accent);
+  letter-spacing: 0.08em;
 }
-nav {
-  display: flex;
-  gap: 18px;
-}
-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-nav a:hover { color: var(--accent); }
 
-/* ===========================
-   5. HERO-БЛОК
-=========================== */
-.hero {
+.nav-links {
   display: flex;
-  align-items: center;
-  gap: 40px;
-  padding: 60px 0;
+  gap: 24px;
 }
-.hero img {
-  width: 400px;
-  height: 280px;
-  object-fit: cover;
-  border-radius: var(--radius);
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 14px;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition);
 }
-.hero h1 {
-  font-size: 36px;
-  font-weight: 400;
-  margin-bottom: 8px;
+
+.nav-links a:hover,
+.nav-links a.active {
+  border-bottom: 1px solid var(--border);
 }
-.hero p {
-  color: var(--muted);
+
+/* ====== HERO ====== */
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
   max-width: 480px;
+  line-height: 1.5;
+  margin-bottom: 24px;
 }
 
-/* ===========================
-   6. КАРТОЧКИ ТОВАРОВ
-=========================== */
-.card {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 16px;
-  border: 1px solid #e5e7eb;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.card img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: var(--radius);
-}
-.card-title {
-  font-family: var(--font-head);
-  font-size: 18px;
-}
-.card-price {
-  color: var(--muted);
-  font-weight: 600;
-}
-.card-actions {
-  display: flex;
-  gap: 10px;
-}
+/* ====== КНОПКИ ====== */
 
-/* ===========================
-   7. КНОПКИ
-=========================== */
 .btn {
-  display: inline-block;
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-weight: 600;
+  display: inline-flex;
+  padding: 12px 24px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-main);
+  font-size: 14px;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
-.btn-primary {
-  background: var(--accent);
-  color: #fff;
-}
-.btn-outline {
-  border: 1px solid #e5e7eb;
-  color: var(--accent);
-}
-.btn:hover { opacity: 0.85; }
 
-/* ===========================
-   8. СТРАНИЦА ТОВАРА
-=========================== */
-.product {
+.btn:hover {
+  background: var(--border);
+  color: #ffffff;
+}
+
+/* ====== КАТАЛОГ ====== */
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.product-card {
+  border: 1px solid var(--border);
+  padding: 16px;
+  transition: var(--transition);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  background: #ffffff;
+}
+
+.product-image {
+  width: 100%;
+  height: 260px;
+  border: 1px solid var(--border);
+  background: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.product-title {
+  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.product-meta {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-price {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* ====== ТЕКСТОВЫЕ БЛОКИ ====== */
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* ====== КАРТОЧКА ТОВАРА ====== */
+
+.two-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  padding: 40px 0;
 }
-.product img {
-  width: 100%;
-  border-radius: var(--radius);
-}
-@media (max-width: 900px) { .product { grid-template-columns: 1fr; } }
 
-/* ===========================
-   9. FOOTER
-=========================== */
-footer {
-  border-top: 1px solid #e5e7eb;
-  padding: 24px 0;
-  text-align: center;
-  color: var(--muted);
-  font-size: 14px;
+.list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.list li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+/* ====== FOOTER ====== */
+
+.footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
 }
