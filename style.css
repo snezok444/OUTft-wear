@@ -1,107 +1,185 @@
-/* css/styles.css
-   Минималистичный стиль для статического магазина подростковой одежды
-   Лаконично, читаемо, адаптивно
-*/
-
+/* ====== БАЗА ====== */
 :root{
   --bg: #ffffff;
-  --surface: #fbfcfd;
-  --text: #0b1220;
+  --surface: #f9fafb;
+  --text: #0f172a;
   --muted: #6b7280;
   --accent: #111827;
-  --radius: 10px;
-  --gap: 18px;
+  --radius: 12px;
+  --gap: 20px;
   --container: 1100px;
   --font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  --font-head: "Poppins", Inter, system-ui, Arial;
 }
 
-/* Базовый сброс */
 *{box-sizing:border-box}
-html,body{height:100%}
 body{
   margin:0;
   font-family:var(--font);
   background:var(--bg);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
-  line-height:1.45;
-  font-size:16px;
+  line-height:1.5;
 }
 
-/* Контейнер */
+/* ====== КОНТЕЙНЕР ====== */
 .container{
   max-width:var(--container);
   margin:0 auto;
-  padding:20px;
+  padding:24px;
 }
 
-/* Хедер */
+/* ====== ТИПОГРАФИКА ====== */
+/* Заголовки — Motter Tektura */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Motter Tektura', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.muted{color:var(--muted)}
+
+/* ====== HEADER ====== */
 .header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:18px 0;
-  border-bottom:1px solid #eef2f7;
-  background:transparent;
+  padding:20px 0;
+  border-bottom:1px solid #e5e7eb;
 }
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
 .logo{
-  width:40px;height:40px;border-radius:8px;
-  background:linear-gradient(135deg,var(--accent),#2b3440);
-  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  background:#111827;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
 }
-.nav{display:flex;gap:12px;align-items:center}
-.nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
-.cta{background:var(--accent);color:#fff;padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:700}
+.nav{
+  display:flex;
+  gap:18px;
+}
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:500;
+}
 
-/* Hero */
-.hero{display:flex;gap:24px;align-items:center;padding:28px 0}
-.hero-left{max-width:640px}
-.kicker{font-size:13px;color:var(--muted);margin-bottom:6px}
-.title{font-size:26px;margin:0 0 8px 0;font-weight:700}
-.lead{color:var(--muted);margin:0 0 14px 0}
+/* ====== КНОПКИ ====== */
+.btn{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:600;
+  text-decoration:none;
+}
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+}
+.btn-outline{
+  border:1px solid #e5e7eb;
+  color:var(--accent);
+}
 
-/* Сетка каталога */
-.grid{display:grid;gap:16px}
-.grid-3{grid-template-columns:repeat(3,1fr)}
-@media (max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.grid-3{grid-template-columns:1fr}}
+/* ====== HERO ====== */
+.hero{
+  display:flex;
+  align-items:center;
+  gap:40px;
+  padding:40px 0;
+}
+.hero img{
+  width:360px;
+  height:240px;
+  object-fit:cover;
+  border-radius:14px;
+}
 
-/* Карточка */
+/* ====== КАТАЛОГ ====== */
+.grid{
+  display:grid;
+  gap:var(--gap);
+}
+.grid-3{
+  grid-template-columns:repeat(3,1fr);
+}
+@media(max-width:900px){
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .grid-3{grid-template-columns:1fr}
+}
+
+/* ====== КАРТОЧКА ТОВАРА ====== */
 .card{
   background:var(--surface);
   border-radius:var(--radius);
-  padding:12px;
+  padding:16px;
   display:flex;
   flex-direction:column;
-  gap:10px;
-  box-shadow:0 6px 18px rgba(11,17,28,0.04);
-  border:1px solid rgba(14,20,30,0.03);
+  gap:12px;
+  border:1px solid #e5e7eb;
 }
-.card img{width:100%;height:220px;object-fit:cover;border-radius:8px}
-.card .title{font-weight:700;font-size:15px}
-.card .price{color:var(--muted);font-weight:700}
-.card .actions{display:flex;gap:8px;align-items:center}
+.card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  border-radius:10px;
+}
+.card-title{
+  font-weight:600;
+  font-size:16px;
+}
+.card-price{
+  color:var(--muted);
+  font-weight:600;
+}
+.card-actions{
+  display:flex;
+  gap:10px;
+}
 
-/* Кнопки в карточке */
-.link{color:var(--accent);text-decoration:none;font-weight:700;font-size:14px}
-.btn-outline{padding:8px 10px;border-radius:10px;border:1px solid #eef2f7;background:transparent;color:var(--accent);text-decoration:none;font-weight:700}
-
-/* Страница товара */
+/* ====== СТРАНИЦА ТОВАРА ====== */
 .product{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:24px;
-  align-items:start;
+  gap:40px;
+  padding:40px 0;
 }
-@media (max-width:900px){.product{grid-template-columns:1fr}}
-.product img{width:100%;border-radius:10px;object-fit:cover}
-.meta{color:var(--muted);font-size:14px;margin-top:10px}
-.sizes{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.size{padding:8px 12px;border-radius:8px;border:1px solid #eef2f7;background:#fff;font-weight:600}
+@media(max-width:900px){
+  .product{grid-template-columns:1fr}
+}
+.product img{
+  width:100%;
+  border-radius:14px;
+}
+.sizes{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.size{
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid #e5e7eb;
+  font-weight:600;
+}
 
-/* Footer */
-.footer{border-top:1px solid #eef2f7;padding:18px 0;margin-top:28px;text-align:center;color:var(--muted);font-size:14px}
-
-/* Акценты и доступность */
-a:focus{outline:3px solid rgba(17,24,39,0.08);outline-offset:2px;border-radius:8px}
+/* ====== FOOTER ====== */
+.footer{
+  border-top:1px solid #e5e7eb;
+  padding:24px 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+}
